@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="./css/login.css">
+      <link rel="stylesheet" type="text/css" href="./css/utilities.css">
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+      
+      <script src="./database/firebase.js"></script>
+      <script src="./database/database.js"></script>
+      <script src="./js/utilities.js"></script>
+      <script src="./database/signIn.js"></script>
+   </head>
+
+   <body style="margin: 0; background: #ffffff">
+      <div id="headerContent"></div>
+      <div id="toast" class="toast"></div>
+      <div class="container-fluid login-container">
+         <div class="row">
+            
+            <div class="col-md-6 login-form">
+               <br>
+               <br>
+               <br>
+               <br>
+               <h2 class="heading_login">Login</h2>
+               <form id="LoginForm">
+                  <div class="form-group">
+                     <label for="username" class="username_heading">Username</label>
+                     <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                  </div>
+                  
+                  <div class="form-group">
+                     <label for="password" class="password_heading">Password</label>
+                     <div class="input-group" style="width: 100%;">
+                       <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                       <!-- <div class="input-group-append" style="z-index: 6;">
+                         <span class="input-group-text">
+                           <i id="togglePassword" class="fa fa-eye-slash"></i>
+                         </span>
+                       </div> -->
+                     </div>
+                   </div>
+                   
+                   
+                   
+                  <div id="login_btn">
+                     <button type="submit" class="btn btn-Dark" >Login</button>
+                     <br>
+                  </div>
+               </form>
+               <div>
+
+               </div>
+               <div>
+                  <br>
+                  <button type="button" class="btn btn-primary btn-md btn-block" onclick="signInWithGoogle()">Sign in with Google</button>
+                  <button type="button" class="btn btn-seondary btn-md btn-block" onclick="signInWithFacebook()">Sign in with Facebook</button>
+               </div>
+            </div>
+
+            <div id="login_image" class="col-md-6 login-image">
+               <br>
+               <img src="images/common/login-pg-bg1.png" class="img-fluid" alt="Group 30" height="350px">
+               <!-- <p class="text-" style="font-size: 12px;">Where Events Comes to Life</p> -->
+            </div>
+         </div>
+         <br>
+         <br>
+      </div>
+      <div id="footerContent"></div>
+      <script>
+         $(function () {
+           $("#footerContent").load("./footer.html");
+           $("#headerContent").load("./header.html");
+         });
+      </script>
+   </body>
+</html>

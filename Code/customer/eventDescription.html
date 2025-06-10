@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="./css/eventDescription.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/utilities.css">
+    
+    <script src="./js/eventDescription.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        data-tag="font" />
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <script src="./js/home.js"></script>
+    <script src="./database/firebase.js"></script>
+    <script src="./database/database.js"></script>
+    <script src="./js/utilities.js"></script>
+
+</head>
+
+<body >
+        <div id="headerContent"></div>
+        <div id="toast" class="toast"></div>
+
+        <div class="main-container">                  
+        <div class="event-details" data-testid="event-details">
+            <div class="event-hero-wrapper" data-testid="event-hero">
+                <div class="event-hero" style="width: 100%; margin-top: 130px;">
+                    <div class="event-hero_Img" style="float: left; width: 50%; padding-left: 35px;">
+                        <img style="width: 100%;padding-left: 8px; height: 100%; border-radius: 8px;"  id="eventImg"/>
+                    </div>
+                    <div class="event-hero_Img" style="float: right; width: 50%; padding-left: 5px;">
+                        <div class="col-xl-3 col-lg-4 col-md-6 d-flex" style="width: 100%;margin-top: 5px;">
+                            <!-- <p class="outset" id="eventCategory"></p> -->
+                            <p class="outset" id="eventTitle"></p>
+                            <p class="outset" id="eventDescriptionShort"></p>
+                            <p class="outset2" id="eventDescriptionLong"></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="event-details__wrapper">
+                    <div class="event_details" style="display: flex; flex-direction: column; width: 70%;">
+                        <div class="event_schedule" style="display: flex; justify-content: space-around;">
+
+                            <div class="event_calendar" style="display: flex; ">
+                                <img class="calendar_img" src="./images/ticket.png" />
+                                <span style="display: flex; flex-direction: column; padding-left: 15px;">Tickets Sold
+                                    <span><span id="available"></span> /
+                                    <span id="total"></span></span>
+                                </span>
+                            </div>
+
+                            <div class="event_location" style="padding-left: 25px;">
+                                <img class="location_img" src="./images/location.PNG" />
+                                <span id="evntLocation">
+                                </span>
+                            </div>
+
+                            
+                            <div class="event_calendar" style="display: flex; padding-left: 25px;">
+                                <img class="calendar_img" src="./images/calendar.PNG" />
+                                <span style="display: flex; flex-direction: column; padding-left: 15px;">Date & Time
+                                    <span id="fromDate"></span>
+                                    <span id="toDate"></span>
+                                </span>
+                            </div>
+
+
+
+                        </div>
+                        <div class="event-description" id="postedBy">
+                            <div class="event_ticket"  style="display: flex; width: 500px; max-width: none !important; float: left;margin: 10px;">
+                                    <div>
+                                        <img id="userPicture" src="" alt="Profile Picture/Company Logo" style="height: 150px;width: 150px;">
+                                   
+                                        <div class="social-media-form">
+                                            <div class="input-group">
+
+                                              <div class="input-group-text" style="padding: 5px;" onclick="openFB()" id="fbCont">
+                                                <i class="fab fa-facebook"></i>
+                                                <label type="text" id="facebookHandle" style="margin-left: 10px;">
+                                              </div>
+
+                                              <div class="input-group-text" style="padding: 5px;" onclick="openInsta()" id="inCont">
+                                                <i class="fab fa-instagram"></i>
+                                                <label type="text" id="instagramHandle" style="margin-left: 10px;">
+                                              </div>
+
+                                              <div class="input-group-text" style="padding: 5px;" onclick="openTwitter()" id="twCont">
+                                                <i class="fab fa-twitter"></i>
+                                                <label type="text" id="twitterHandle" style="margin-left: 10px;">
+                                              </div>
+
+                                            </div>
+                                          </div>
+                                    </div>
+
+                                    <div style="margin-left: 25px;">
+                                        <h4> Event By</h4>
+                                        <h2 id="eventPoster"> </h2>
+                                         <div><span id="eventPosterDetails" style="padding-right: 5px; font-size: 15px;">
+                                        </span></div>
+        
+                                        <div><span> Contact: </span> <span id="evnetContact" style="padding-right: 5px; font-size: 15px; margin-top: 20px;">
+                                        </span></div>
+                                        
+                                    </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="width: 30%; margin-top: -45px;">
+                        <div class="event_ticket" >
+                            <h2 id="event_info"> </h2>
+                             <div><span id="ticketCost" style="padding-right: 5px; font-size: 15px;">00,00</span><span>&#8364;</span></div>
+                            <button id="buy_ticket_btn">Buy Ticket</button>
+                        </div>
+                        <div>
+                            <p><b>Refund Policy:</b></p>
+                            <p>Contact the organizer to request a refund.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <!-- Modal ticket start -->
+        <div id="myModal" class="modal">
+            <div class="modal-content" style="display: flex; flex-direction: column; width: 70%; text-align: center;">
+                <div class="modalHeader" style="padding-bottom: 10px;">
+                    <p class="eventTicketTitle" id="eventTicketTitle" style="font-weight: bold;"></p>
+                    <span id="fromDateTicket"></span>
+                    <span id="toDateTicket"></span>
+                    <div class="closeModal">
+                        <span class="close">&times;</span>
+                    </div>
+                </div>
+                <div class="modalMain" style="border: 2px solid #3659e3; border-radius: 5px; padding-bottom: 10px;">
+                    <h3 id="ticketTitle">Event Ticket</h3>
+                    <div id="paymentForm" style="display: contents;align-items: center!important">
+                        <div class="column">
+                            <div class="card" style="display: flex; flex-direction: row;"> 
+                                    <div style="width: 30%;"></div>                                                          
+                                    <div>
+                                        <p style="margin-left: 20px;padding-top: 10px;"><b>Quantity: </b></p>
+                                    </div>
+                                    <div>
+                                        <input style="margin-left: 20px;"type='button' value='-' id="qtyminus" onclick="minus('ticketQuantity')"/>
+                                        <input type='text' id='ticketQuantity' value='0' style="width: 40px;" />
+                                        <input type='button' value='+' id="qtyplus" onclick="plus('ticketQuantity')"/>
+                                    </div>
+                                    <div style="padding-left: 20px;font-size: 18px;padding-top: 8px;">
+                                        <span class="times">&times;</span> <span id="payCost">00,00</span><span style="padding-left: 5px;">&#8364;</span>
+                                    </div>                                                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px;">
+                        <span id="payCostTotal">00,00</span><span style="padding-left: 5px;">&#8364;</span>
+                    </div>
+                </div>
+
+                <div class="modalFooter" style="padding-bottom: 10px;padding-top: 20px;">
+                    <button type="submit" id="payBtn" onclick="paynow()">Pay now</button> 
+                </div>
+
+          </div>
+        </div>
+        <!-- Modal ticket ends -->
+        </div>
+ 
+    <div id="footerContent" style="margin-top: -50px;"></div>
+    <script> 
+        $(function(){
+            $("#headerContent").load("./header.html");
+           $("#footerContent").load("./footer.html"); 
+           
+        });
+     </script> 
+</body>
+
+</html>
+
+
+
+<!-- <div id="event_page" class="row header">
+    <div class="col-sm-3 col-lg-3">
+        <img class="logo" src="./images/artefectoLogo.png">
+    </div>
+
+    <div class="col-sm-5 col-lg-5">
+        <div class="input-group" style="width: 100%;">
+            <input class="searchBar" type="text" placeholder="Search for events, movies, plays, artists, etc"> -->
+            <!-- <input type="text" class="form-control" />  -->
+            <!-- <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span> -->
+        <!-- </div>/input-group -->
+    <!-- </div>
+
+    <div class="col-sm-4 col-lg-4">
+        <div class="header-right">
+            <div class="nav-buttons">
+                <button class="nav-button transparent-button" href="index.html" onclick="home()">Home</button>
+                <button class="nav-button transparent-button" onclick="login()">Login</button>
+                <button class="nav-button transparent-button" onclick="singup()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div> -->

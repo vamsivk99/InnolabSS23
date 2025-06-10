@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="./css/add_my_event.css">
+      <link rel="stylesheet" type="text/css" href="./css/header.css">
+      <link rel="stylesheet" type="text/css" href="./css/footer.css">
+      <link rel="stylesheet" type="text/css" href="./css/utilities.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" data-tag="font">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+      
+      <!-- <script src="./database/firebase.js"></script> -->
+      <script type="text/javascript" src="./database/firebase.js"></script>
+      <script type="text/javascript" src="./database/database.js"></script>
+      <script src="./js/add_my_event.js"></script>
+      <script src="./database/signup.js"></script>
+      <script src="./database/signIn.js"></script>
+      <script src="./js/utilities.js"></script>
+
+
+   </head>
+   <body style="margin: 0; background: #ffffff">
+      <div id="headerContent"></div>
+      <div class="main-container">
+         <div class="row" style="width: 80%;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="panel">
+               <div class="panel-body">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div style="display:flex; justify-content:center;">
+                           <label class="text-event-header" type="block">ADD EVENT</label>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <div class="form-group">
+                           <label for="eventName">Event Name</label>
+                           <input type="text" class="form-control" id="eventName" placeholder="Enter the event name">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="eventPicture">Event Picture</label>
+                           <input type="file" class="form-control" id="eventPicture">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="startDate">Start Date</label>
+                           <input type="date" class="form-control" id="startDate" >
+                        </div>
+                        <div class="form-group">
+                           <label for="endDate">End Date</label>
+                           <input type="date" class="form-control" id="endDate">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="startTime">Start Time</label>
+                           <input type="time" class="form-control" id="startTime">
+                        </div>
+                        <div class="form-group">
+                           <label for="endTime">End Time</label>
+                           <input type="time" class="form-control" id="endTime">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="addressLine1">Address Line 1</label>
+                           <input type="text" class="form-control" id="addressLine1" placeholder="Enter address line 1">
+                        </div>
+                        <div class="form-group">
+                           <label for="zipCode">Zip Code</label>
+                           <input type="text" class="form-control" id="zipCode" placeholder="Enter zip code">
+                        </div>
+                        <div class="form-group">
+                           <label for="city">City</label>
+                           <input type="text" class="form-control" id="city" placeholder="Enter city">
+                        </div>
+                        <div class="form-group">
+                           <label for="country">Country</label>
+                           <input type="text" class="form-control" id="country" placeholder="Enter country">
+                        </div>
+                        <br>
+                        
+                        <div class="form-group">
+                           <label for="shortDescription">Short Description</label>
+                           <textarea class="form-control" id="shortDescription" rows="2" maxlength="50" placeholder="Enter a short description of the event"></textarea>
+                        </div>
+                        <div class="form-group">
+                           <label for="longDescription">Long Description</label>
+                           <textarea class="form-control" id="longDescription" rows="5" placeholder="Enter a long description of the event"></textarea>
+                        </div>
+
+                        
+                        <br>
+                        <div class="form-group">
+                           <label for="category">Category</label>
+                           <div style="text-align: center;">
+                              <label class="radio-inline">
+                                 <input type="radio" name="category" value="Music Concerts"> Music Concerts
+                              </label>
+                              <label class="radio-inline">
+                                 <input type="radio" name="category" value="Street Show"> Street Show
+                              </label>
+                              <label class="radio-inline">
+                                 <input type="radio" name="category" value="Art Exhibitions"> Art Exhibitions
+                              </label>
+                              <label class="radio-inline">
+                                 <input type="radio" name="category" value="Dance Performances"> Dance Performances
+                              </label>
+                              <label class="radio-inline">
+                                 <input type="radio" name="category" value="Others"> Others
+                              </label>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="form-group">
+                           <label for="ticketName">Ticket Name</label>
+                           <input type="text" class="form-control" id="ticketName" placeholder="Enter ticket name">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="ticketQuantity">Ticket Quantity</label>
+                           <input type="number" class="form-control" id="ticketQuantity" placeholder="Enter ticket quantity">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                           <label for="ticketPrice">Ticket Price</label>
+                           <input type="number" class="form-control" id="ticketPrice" placeholder="Enter ticket price">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div style="display:flex; justify-content:center;">
+                           <button class="btn btn-primary" onclick="submitEvent()">SUBMIT</button>
+                           <p id="successMessage" style="display: none;"></p>
+                           <p id="errorMessage" style="display: none;"></p>
+                        </div>
+                        <div id='loaderView' class="loader"></div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footerContent"></div>
+      <script>
+         $(function(){
+            $("#footerContent").load("./footer.html");
+         });
+         
+         $(function(){
+            $("#headerContent").load("./header.html");
+         });
+      </script>
+   </body>
+
+</html>
+
+

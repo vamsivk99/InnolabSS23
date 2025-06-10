@@ -1,0 +1,256 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  
+  .col-md-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  .text-event-header {
+    color: #fff !important;
+    height: auto;
+    font-size: 30px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Abhaya Libre SemiBold;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    padding: 20px;
+  }
+  
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .website-artefacto-group121 {
+    margin-top: 15px;
+    width: auto;
+    height: auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .website-artefacto-group103 {
+    width: 100%;
+    height: 197px;
+    display: flex;
+    position: relative;
+  }
+  
+  .website-artefacto-rectangle124,
+  .website-artefacto-rectangle133 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 19px;
+  }
+  
+  .website-artefacto-rectangle124 {
+    top: 0;
+    left: 0;
+  }
+  
+  .website-artefacto-rectangle133 {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .website-artefacto-text087 {
+    position: relative;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 150%;
+    font-family: "DM Sans", sans-serif;
+  }
+  
+  .website-artefacto-text089 {
+    position: relative;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 150%;
+    font-family: "DM Sans", sans-serif;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .website-artefacto-group112 {
+    width: 28px;
+    height: 48px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    margin-right: 10px;
+  }
+  
+  .website-artefacto-text096 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+  }
+  
+  .website-artefacto-text098 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff !important;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1;
+  }
+  
+  
+  
+  /* Drop Down */
+  .dropdown {
+    position: relative;
+    /* display: inline-block;
+        */
+    float: right;
+    margin-right: 25px;
+  }
+  
+  .dropdown-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #F2F4FF;
+    cursor: pointer;
+  }
+  
+  .dropdown-placeholder {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    color: #1D275F;
+    font-size: 14px;
+  }
+  
+  .dropdown-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: #888 transparent transparent transparent;
+    vertical-align: middle;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    margin-top: 5px;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: none;
+  }
+  
+  .dropdown-menu li {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+  
+  
+  .laod-more-button {
+    color: #fff !important;
+    border-color: #fff !important;
+    background: transparent;
+  }
+  
+  .noResults {
+    padding: 100px;
+    width: 100%;
+    margin: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 150%;
+    font-family: "DM Sans", sans-serif;
+  }
+  
+  .delete-button {
+    position: absolute;
+    display: inline-flex;
+    right: 10px;
+    top: 10px;
+    background-color: #F2F4FF;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 5;
+  }
+  
+  .edit-button {
+    position: absolute;
+    display: inline-flex;
+    top: 10px;
+    right: 50px;
+    background-color: #F2F4FF;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 5;
+  }
+  
+  
+  .add-button {
+    padding: 10px;
+    position: relative;
+    float: right;
+    border: none;
+    margin-right: 25px;
+    border-radius: 20px;
+    background-color: #F5167E;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .my-events-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    padding: 90px;
+    padding-top: 120px;
+    background-image: url("../images/background.jpeg");
+    background-size: cover;
+    opacity: 0.95;
+  }

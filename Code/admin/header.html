@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="./css/header.css">
+      <script src="./js/header.js"></script>
+   </head>
+   <body>
+      <div id="toast" class="toast"></div>
+
+      
+      <div class="row header">
+         <div class="col-sm-4 col-lg-2"><a href="./index.html">
+            <img class="logo" src="./images/logo_white.png"></a>
+         </div>
+       
+         <div class="col-sm-4 col-lg-4" id="searchBarDiv">
+            <div class="search-bar-wrapper">
+              <input id="searchContent" type="text" class="search-bar" placeholder="Search for events, movies, plays, artists, etc...">
+              <i id="onSearch" class="fa fa-search search-icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          
+         <div class="col-sm-4 col-lg-6" id="registration">
+            <div class="header-right">
+               
+
+
+               <div class="dropdown">
+                  <span>Admin &#x25BC; </span>
+                  <div class="dropdown-content">
+                    <p style="margin-bottom: 0 !important;" onclick="logout()">Signout</p>
+                  </div>
+                </div>
+            
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

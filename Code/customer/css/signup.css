@@ -1,0 +1,30 @@
+.signup-container {
+   background: linear-gradient(180deg, rgb(237, 70, 144) 0%, rgb(85, 34, 204) 100%);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+}
+
+.signup-form {
+   max-width: 400px;
+   padding: 20px;
+}
+
+.signup-image {
+   text-align: center;
+}
+
+
+.heading_signup,
+.username_heading,
+.password_heading {
+   color: white;
+}
+
+ 
+.img-fluid {
+   margin-top: 60px;
+   margin-bottom: 30px;
+ }
+ 

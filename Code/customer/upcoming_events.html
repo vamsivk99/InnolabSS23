@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="./css/upcoming_events.css">
+      <script src="./js/upcoming_events.js"></script>
+   </head>
+   <body>
+    <div>
+    <div style="margin-top: 30px;">
+       <span class="text-event-header">Upcoming Events (<span id="count"></span>)</span >
+       
+       <div class="dropdown">
+          <button class="dropdown-btn">
+          <span id="eventCategory" class="dropdown-placeholder">Event Category</span>
+          <span class="dropdown-arrow"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>All</li>
+             <li>Music Concerts</li>
+             <li>Street Show</li>
+             <li>Art Exhibitions</li>
+             <li>Dance Performances</li>
+          </ul>
+       </div>
+
+       <div class="dropdown">
+          <button class="dropdown-btn">
+          <span id="eventPlace" class="dropdown-placeholder">Event place</span>
+          <span class="dropdown-arrow"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>All</li>
+             <li>Nuremberg</li>
+             <li>Erlangen</li>
+          </ul>
+       </div>
+
+    </div>
+    <div id="list" style="padding:20px"></div>
+ </div>
+ 
+ <div class="nav-buttons">
+    <button id="laodMoreBtn" class="nav-button laod-more-button " onclick=loadmore()>Load More</button>
+ </div>
+ </body>
+</html>

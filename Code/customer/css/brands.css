@@ -1,0 +1,105 @@
+.website-artefacto-brands {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+   /* Optional: Add some spacing between the images */
+  }
+  .website-artefacto-image4 {
+    top: 113.347900390625px;
+    left: 66.7465591430664px;
+    width: 165px;
+    height: 50px;
+    position: absolute;
+  }
+  .website-artefacto-image21 {
+    top: 0px;
+    left: 0px;
+    width: 395px;
+    height: 188px;
+    position: absolute;
+  }
+  .website-artefacto-image14 {
+    top: 34.347900390625px;
+    left: 515px;
+    width: 133px;
+    height: 63px;
+    position: absolute;
+  }
+  .website-artefacto-image15 {
+    top: 0px;
+    left: 702px;
+    width: 212px;
+    height: 131px;
+    position: absolute;
+  }
+  .website-artefacto-image18 {
+    top: 170px;
+    left: 478px;
+    width: 170px;
+    height: 39px;
+    position: absolute;
+  }
+  .website-artefacto-image17 {
+    top: 19px;
+    left: 914px;
+    width: 276px;
+    height: 83px;
+    position: absolute;
+  }
+  .website-artefacto-image19 {
+    top: 170px;
+    left: 715px;
+    width: 125px;
+    height: 44px;
+    position: absolute;
+  }
+  .website-artefacto-image20 {
+    top: 166px;
+    left: 934px;
+    width: 136px;
+    height: 52px;
+    position: absolute;
+  }
+
+
+
+  /* BRands */
+.website-artefacto-text024 {
+    justify-content: center;
+    display: flex;
+    color: rgba(36, 37, 101, 1);
+    height: auto;
+    font-size: 40px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Abhaya Libre SemiBold;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .website-artefacto-text026 {
+    justify-content: center;
+    display: flex;
+    color: rgba(106, 106, 106, 1);
+    height: auto;
+    font-size: 18px;
+    font-style: Regular;
+    text-align: center;
+    font-family: DM Sans;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .website-artefacto-group34 {
+    padding: 30px;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .website-artefacto-group33 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }

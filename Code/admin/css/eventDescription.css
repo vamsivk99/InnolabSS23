@@ -1,0 +1,329 @@
+.logo { 
+  width: 300px;
+  height: auto;
+  display: block;
+}
+.searchBar{
+  width: 100%;
+  color: white;
+  padding: 6px;
+  background: rgba(61, 55, 241, 0.45);
+  border: none;
+  border-radius: 10px;
+}
+.btn-default{
+  color: white !Important;
+  border: none !Important;
+  background: rgba(61, 55, 241, 0.45) !Important;
+  border-radius: 10px;
+}
+.location_img{
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+.calendar_img{
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.ticket_img{
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.event-details__wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  padding: 20px;
+  padding-left: 50px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%
+}
+.transparent-button {
+  border-color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.nav-buttons {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-button {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  color: white;
+}
+
+
+.main-container{
+  background-image:linear-gradient(#ED4690, #5522CC);
+  background-size:cover;
+  /* display:flex; */
+  /* flex-direction: column; */
+  align-items: center;
+  /* padding-bottom: 36px; */
+}
+
+/* #root_page{ 
+  background-color: #e384da;
+  background-image: linear-gradient(to bottom right, #e384da, #3b26b5);
+} */
+
+
+/* Style the header with a grey background and some padding */
+.header {
+  z-index: 1;
+  width: 100%;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header logo {
+  height: 50px;
+  float: left;
+}
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    height: 50px;
+  }
+  .header-right {
+    float: none;
+  }
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.slider-overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(237, 70, 144, 0.6), rgba(85, 34, 204, 0.6));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#event_page {
+  /* background-color: #e3bde8;
+  background: linear-gradient(to bottom, rgba(237, 70, 144, 0.6), rgba(85, 34, 204, 0.6));
+  background-image: linear-gradient(to bottom right, #e3bde8, #341eb2); */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.event-hero-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.event-hero{
+  display: flex;
+  flex-direction: row;
+}
+.eds_search1{
+  position: absolute;
+  top: 355px;
+  left: 575px;
+}
+.eds_button{
+  width: 100px;
+  padding: 10px;
+  border-radius: 25px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 5;
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: center;
+  background-color: violet;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.eds_button:hover{
+  background-color: #a04591;
+}
+p.outset {
+  border-style: none;
+  color: white;
+  border-block-start-color: #e2a0e3;
+  border-block-end-color: #e2a0e3;
+  font-size: 20px;
+}
+
+p.outset2 {
+  border-style: none;
+  color: white;
+  border-block-start-color: #e2a0e3;
+  border-block-end-color: #e2a0e3;
+  font-size: 12px !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #event-description, .event_ticket {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  span {
+    font-weight: bold;
+  }
+  
+  #buy_ticket_btn {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #7e5bcf;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #buy-ticket-btn:hover {
+    background-color: #7e5bcf;
+  }
+  
+  /* event ticket */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    max-width: 90%;
+    max-height: 90%;
+    box-sizing: border-box;
+  }
+  
+  .close {
+    color: #888;
+    float: right;
+    margin-top: -60px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    right: 45px;
+    font-size: 35px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #paymentForm label {
+    /* display: none; */
+    margin-top: 10px;
+  }
+  
+  #paymentForm input {
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  #paymentForm button {
+    margin-top: 10px;
+  }
+  #payBtn{
+    width: 150px;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #7e5bcf;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    #qtyplus{
+      width: 40px;
+      font-size: 16px;
+      text-align: center;
+      background-color: #7e5bcf;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #qtyminus{
+      width: 40px;
+      font-size: 16px;
+      text-align: center;
+      background-color: #7e5bcf;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+  

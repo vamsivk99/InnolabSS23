@@ -1,0 +1,148 @@
+/* body {
+    background-color: #f8f9fa;
+}
+
+.page-title {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.tickets-section {
+    width: 80%;
+    margin: auto;
+}
+
+.ticket-card {
+    border: 1px solid #dee2e6;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.ticket-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.ticket-content {
+    flex-grow: 1;
+}
+
+.ticket-title {
+    margin-bottom: 10px;
+}
+
+.ticket-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ticket-price {
+    color: #dc3545;
+    font-weight: bold;
+} */
+
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: #212529;
+    line-height: 1.6;
+}
+.main-container{
+    background-image:linear-gradient(#ED4690, #5522CC);
+    background-size:cover;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 36px;
+}
+.main-heading{
+    color:#ffffff;
+    font-size:16px;
+}
+.tickets-container{
+}
+.ticket{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding:18px 42px 24px 42px;
+    display:flex;
+    margin:18px;
+}
+.ticket-description-container{
+    padding-top:12px;
+}
+.ticket-img-container{
+    width:180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right :24px;
+}
+.ticket-img{
+    height:100px;
+    width:140px;
+    background-size: cover;
+    margin-bottom: 15px;
+    margin-top:20px;
+}
+.ticket-img-name{
+    font-size:10px;
+    font-weight:500;
+    font-style: italic;
+}
+.horizontal-line{
+    background-color: black;
+    border:solid 1px grey;
+    height:140px;
+}
+.ticket-description{
+    color:#000000;
+    font-style:italic;
+    font-size:14px;
+    font-weight:500;
+    margin:10px;
+    margin-left:18px;
+}
+.ticket-price-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:36px
+}
+.ticket-btn{
+    background: transparent;
+    border:solid #3D37F1 2px;
+    border-radius: 20px;
+    color:#3D37F1;
+    padding:4px 24px;
+    font-weight:500;
+    width: 160px;
+    margin-top:18px;
+    outline:none;
+    text-align:center
+}
+.ticket-qty{
+    color:#000000;
+    font-style:italic;
+    font-size:14px;
+    font-weight:500;
+    margin-top:15px
+}
+.price-btn{
+    background: #ED4690;
+    border:solid #ED4690 2px;
+    border-radius: 20px;
+    color:#ffffff;
+    padding:4px 24px;
+    font-weight:500;
+    width: 160px;
+    outline:none;
+    cursor:pointer;
+    text-align: center;
+}

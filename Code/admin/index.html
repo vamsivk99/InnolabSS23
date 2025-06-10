@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Title -->
+    <title>ArteFacto</title>
+    
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/utilities.css">
+    <link rel="stylesheet" type="text/css" href="./css/all_events.css">  
+
+    <!-- End layout styles -->
+
+    
+    <!-- Logo -->
+    <link rel="shortcut icon" href="./images/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+
+  </head>
+  <body>
+    <div class="container-scroller">
+       <div id="headerContent"></div>
+       <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            <div class="my-events-container">
+              <div style="margin-top: 30px;">
+                 <span class="text-event-header"> Slider Events </span >
+              </div>
+              <div id="sliderList" style="padding:20px"></div>
+           </div>
+
+            <div class="my-events-container">
+              <div style="margin-top: 30px;">
+                 <span class="text-event-header">All Events (<span id="count"></span>)</span >
+                 <!-- <button class="add-button" onclick="goToAddEvent()">Add Event +</button> -->
+                 <div class="dropdown">
+                    <button class="dropdown-btn">
+                    <span id="eventCategory" class="dropdown-placeholder">Event Category</span>
+                    <span class="dropdown-arrow"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>All</li>
+                       <li>Music Concerts</li>
+                       <li>Street Show</li>
+                       <li>Art Exhibitions</li>
+                       <li>Dance Performances</li>
+                    </ul>
+                 </div>
+          
+                 <div class="dropdown">
+                    <button class="dropdown-btn">
+                    <span id="eventPlace" class="dropdown-placeholder">Event place</span>
+                    <span class="dropdown-arrow"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>All</li>
+                       <li>Nuremberg</li>
+                       <li>Erlangen</li>
+                    </ul>
+                 </div>
+          
+              </div>
+              <div id="list" style="padding:20px"></div>
+           </div>
+           
+           <div class="nav-buttons">
+              <button style="visibility: hidden;" id="laodMoreBtn" class="nav-button laod-more-button" onclick=loadmore()>Load More</button>
+           </div>
+      
+         <!-- HTML -->
+          <div class="popup-container" style="display: none;" id="popup-container">
+            <div class="popup">
+              <p>Are you sure you want to delete the event?</p>
+              <div class="button-container">
+                <button id="btn-yes" class="btn-yes">Yes</button>
+                <button id="btn-cancel" class="btn-cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="popup-container" style="display: none;" id="popup-container-slider">
+            <div class="popup">
+              <p>Please select the position you want to add the slider event at:</p>
+              <select style="width: 50%; margin: 20px;" id="position-dropdown">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <div class="button-container">
+                <button id="btn-yes" class="btn-yes">Add</button>
+                <button id="btn-cancel" class="btn-cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="popup-container" style="display: none;" id="popup-container-slider-delete">
+            <div class="popup">
+              <p>Are you sure you want to Remove the event from slider list?</p>
+              <div class="button-container">
+                <button id="btn-yes" class="btn-yes">Yes</button>
+                <button id="btn-cancel" class="btn-cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+
+          
+          <div class="popup-container" style="display: none;" id="popup-container-3d">
+            <div class="popup">
+              <p>Please select the position you want to add the 3d event at:</p>
+              <select style="width: 50%; margin: 20px;" id="position-dropdown">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+
+              <div class="button-container">
+                <button id="btn-yes" class="btn-yes">Add</button>
+                <button id="btn-cancel" class="btn-cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+
+
+            <!-- Add form
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="error2">
+                      </div>
+                      <h4 class="card-title text-dark">Add event</h4>
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="What do you want to add?" id="eventName" value="" required>
+                        <input type="file"  class="form-control" accept="image/*" id="file">
+                        <div class="input-group-append">
+                          <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task" onclick="addevent()">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+               <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="error3">
+                      </div>
+                      <h4 class="card-title text-dark">Add Events From JSON File</h4>
+                      <div class="input-group" style="z-index: auto;">
+                        <input type="file" id="jsonFileInput" accept=".json">
+                        <div class="input-group-append">
+                          <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task" onclick="addfileEvent()">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+
+              
+            <!-- List will be populated here -->
+            <!-- <div class="row" id="list">
+              <div id="dataviewer">
+            </div> -->
+
+            
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    
+    <!-- Popup for delete event -->
+    <div id="popup1" class="overlay">
+        <div class="popup popup2">
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              <h3 class="text-primary">Are you sure?</h3>
+              <a class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task" onclick="deleteevent()" href="#">Yes</a>
+              <a class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task" onclick="" href="#">No</a>
+            </div>
+        </div>
+    </div>
+    <!-- Popup ends -->
+
+    <!-- Popup for update amount -->
+    <div id="editevent" class="overlay">
+      <div class="popup popup2">
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            <div id="editError"></div>
+            <h3 class="text-primary">Update event</h3>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="New name" id="eventName1" value="" required>
+              <input type="file"  class="form-control" accept="image/*" id="file1">
+              <div class="input-group-append">
+                <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task" onclick="editevent()">Edit</button>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <!-- Popup ends -->
+
+    <!-- Popup for password -->
+    <div id="password" class="overlay">
+      <div class="popup">
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            <div id="error4"></div>
+              <div class="form-group">
+                  <div class="input-group">
+                    <input type="password" class="form-control" value="" id="oldPassword" placeholder="Old password" required>
+                    <input type="password" class="form-control" value="" id="newPassword" placeholder="New Password" required>
+                    <div class="input-group-append">
+                      <button class="btn btn-sm btn-gradient-primary" type="button" onclick="changePassword()">Display</button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+    <!-- Popup ends -->
+
+    <!-- jquery js -->
+    <script src="./js/jquery.js"></script>
+    <!-- Firebase -->
+    <script src="./js/firebase.js"></script>
+    <!-- Auth -->
+    <script src="./js/auth.js"></script>
+    <!-- Database -->
+    <script src="./js/database.js"></script>
+    <!-- Main script -->
+    <script src="./js/script.js"></script>
+    <script src="./js/utilities.js"></script>
+
+ 
+ 
+    <script>
+       $("#headerContent").load("./header.html"); 
+    
+        // Populate list
+        window.onload = function() {
+          
+          if (isAuthenticated()) {
+
+            myApp.read("3dNewTest",populateeventList3dEvents);
+            myApp.read("sliderNew",populateeventListSliderData);    
+            myApp.read("events",populateeventListUpcoming);
+
+          } else {
+
+            window.location.href = "./login.html";
+            
+          }
+
+          
+        };
+    </script>
+
+  </body>
+</html>

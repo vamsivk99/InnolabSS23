@@ -1,0 +1,153 @@
+/* Header */
+.nav-buttons {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  color: white;
+}
+
+/* Style the header with a grey background and some padding */
+.header {
+  z-index: 99;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style the logo link */
+.header .logo {
+  height: 70px;
+}
+
+/* Float the link section to the right */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.transparent-button {
+  border-color: white;
+  background: rgba(0, 0, 0, 0.2);
+} 
+
+ .search-bar-wrapper {
+  position: relative;
+}
+
+.search-bar {
+  background: #3D37F1;
+  opacity: 0.7;
+  color: #fff;
+  width: 100%;
+  flex-grow: 2;
+  padding: 10px 40px 10px 20px; /* Adjust the padding to accommodate the search icon */
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 18px;
+}
+
+
+.search-bar::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+#menubar1:hover {
+  color: #F5167E !important;
+  text-decoration: solid !important;
+}
+
+#menubar2:hover {
+  color: #F5167E !important;
+  text-decoration: solid !important;
+}
+
+#menubar3:hover {
+  color: #F5167E !important;
+  text-decoration: solid !important;
+}
+
+
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 15px;
+  }
+
+  .header .logo {
+    height: 70px;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .search-icon {
+    display: none;
+  }
+
+  .nav-buttons {
+    padding: 10px;
+  }
+
+  .nav-button {
+    margin-right: 5px;
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .search-bar {
+    margin-left: 70px;
+  }
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

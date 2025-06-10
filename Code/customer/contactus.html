@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+   <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+      />
+   
+   <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
+      data-tag="font"
+      />
+   
+   <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+      />
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+   <link rel="stylesheet" type="text/css" href="./css/contactus.css">
+</head>
+<body>
+   <div id="headerContent"></div>
+
+   <div class="contact-container" style="background-image:url ('../images/background.jpeg')">
+      <h1 class="main-heading">Contact Us</h1>
+     <div class= "contactinfo">
+      <div class="contact-text">
+         <h3>Get in Touch</h3>
+         <p class="description">We'd love to hear from you! Whether you have questions, ideas, or simply want to chat about your next big event, our team is here to help. Reach out to us using any of the contact methods below, and let's bring your vision to life!</p>
+         <h3>Let's Connect</h3>
+         <p class="description"><strong>Phone:</strong> Give us a ring at +49 17628-600-786. Our enthusiastic team is ready to answer your calls and discuss how we can make your event a success.</p>
+         <p class="description"><strong>Email:</strong> Send us an email at hello@artefacto.com. We're always checking our inbox and will get back to you promptly.</p>
+         <p class="description"><strong>Address:</strong> Visit us at our vibrant office located at 123 Artefacto Street, Erlangen, Germany. We'd be delighted to welcome you and have a face-to-face conversation.</p>
+         <h3>Let's Get Social</h3>
+         <p class="description">Connect with us on social media to stay up-to-date with the latest industry trends, event highlights, and news:</p>
+         <ul>
+            <li>Twitter: <a href="https://twitter.com/artefacto">@ArteFacto</a></li>
+            <li>Facebook: <a href="https://www.facebook.com/ArteFacto">Artefacto</a></li>
+            <li>Instagram: <a href="https://www.instagram.com/ArteFactoOfficial">@ArtefactOfficial</a></li>
+         </ul>
+         <h3>We're Listening</h3>
+         <p class="description">Your feedback matters to us! If you have any suggestions, ideas, or feedback to share, we're all ears. We constantly strive to improve our services and provide you with an exceptional experience. Let us know what you think by filling out the form below, and we'll be in touch promptly.</p>
+      </div>
+      <div class="contact-form">
+         <form>
+            <label class= "input-label" for="email">Email*</label>
+            <input class= "input-element" type="email" id="email" name="email" required>
+            <label class= "input-label" for="fname">First Name*</label>
+            <input class= "input-element" type="text" id="fname" name="fname" required>
+            <label class= "input-label" for="lname">Last Name*</label>
+            <input class= "input-element" type="text" id="lname" name="lname" required>
+            <label class= "input-label" for="phone">Phone Number</label>
+            <input class= "input-element" type="tel" id="phone" name="phone">
+            <label class= "input-label" for="description">Your Message*</label>
+            <textarea class= "input-element"id="description" name="description" rows="5" required></textarea>
+            <button class= "submit-button" type="submit" value="Submit">Submit</button>
+         </form>
+      </div>
+   </div>
+   </div>
+
+   <div id="footerContent"></div>
+
+   <script> 
+      $(function(){
+         $("#footerContent").load("./footer.html"); 
+      });
+      
+      $(function(){
+         $("#headerContent").load("./header.html"); 
+      });
+   </script>
+
+   <script src="./js/contactus.js"></script>
+</body>
+</html>

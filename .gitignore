@@ -1,0 +1,18 @@
+# Byte-compiled
+__pycache__/
+
+# General git
+.DS_Store
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Node modules
+node_modules/
+./Code/ArteFacto/server/node_modules
+
+# Exclude presentation folder
+MidsemesterPresentation/
