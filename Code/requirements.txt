@@ -1,0 +1,25 @@
+# Core ML & Data Science Libraries
+pandas>=1.5.0
+numpy>=1.21.0
+scikit-learn>=1.1.0
+scipy>=1.9.0
+
+# Web Framework & API
+Flask>=2.2.0
+Flask-CORS>=4.0.0
+
+# Database & Storage
+sqlite3  # Built-in with Python
+
+# Data Visualization
+plotly>=5.11.0
+
+# Web Scraping (for crawler functionality)
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+
+# Model Persistence
+joblib>=1.2.0
+
+# Additional ML utilities
+python-dateutil>=2.8.0

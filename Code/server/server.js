@@ -1,5 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'your-stripe-secret-key-here');
-
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -13,8 +13,60 @@ app.use(express.urlencoded({ extended: true }));
 // Enable CORS for all routes
 app.use(cors());
 
-// Serve the HTML file
-app.use(express.static(__dirname));
+// Content Security Policy middleware
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob:; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; " +
+    "style-src 'self' 'unsafe-inline' https: http:; " +
+    "img-src 'self' data: https: http:; " +
+    "font-src 'self' https: http: data:; " +
+    "connect-src 'self' https: http: ws:;"
+  );
+  next();
+});
+
+// Serve static files from different directories
+app.use('/admin', express.static(path.join(__dirname, '../admin')));
+app.use('/customer', express.static(path.join(__dirname, '../customer')));
+app.use('/ml-services', express.static(path.join(__dirname, '../ml-services')));
+app.use(express.static(path.join(__dirname, '../')));
+
+// Root route - redirect to customer interface
+app.get('/', (req, res) => {
+  res.redirect('/customer');
+});
+
+// Admin routes
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../admin/index.html'));
+});
+
+app.get('/admin/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../admin/login.html'));
+});
+
+app.get('/admin/analytics', (req, res) => {
+  res.sendFile(path.join(__dirname, '../admin/ml-analytics.html'));
+});
+
+// Customer routes
+app.get('/customer', (req, res) => {
+  res.sendFile(path.join(__dirname, '../customer/index.html'));
+});
+
+app.get('/customer/events', (req, res) => {
+  res.sendFile(path.join(__dirname, '../customer/upcoming_events.html'));
+});
+
+app.get('/customer/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../customer/login.html'));
+});
+
+app.get('/customer/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../customer/signup.html'));
+});
 
 // Handle the payment token
 app.post('/pay', async (req, res) => {

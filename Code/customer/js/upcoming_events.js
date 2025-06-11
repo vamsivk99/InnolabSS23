@@ -3,7 +3,15 @@ var gloabalEventsData = {};
 var total = 0;
 var finalHtml = '';
 
-// Populate event list
+// ML Integration variables
+var mlRecommendations = [];
+var isMLEnabled = false;
+
+// ML Enhancement Functions
+var trendingEvents = [];
+var demandPredictions = {};
+
+// Populate event list with ML enhancements
 function populateeventListUpcoming(upcommingList) {
   var count = 0;
   var finalHtml = '';
@@ -27,7 +35,11 @@ function populateeventListUpcoming(upcommingList) {
       showButton();
     }
     gloabalEventsData = upcommingList;
-//    upcommingList = data;
+
+    // Check if ML service is available and get trending events
+    if (window.mlService && window.mlService.isMLEnabled) {
+      enhanceEventsWithML(upcommingList);
+    }
 
     // Final html
     finalHtml = '<div class="row">';
@@ -51,10 +63,13 @@ function populateeventListUpcoming(upcommingList) {
             image = getRandomImageUrl();
       }
 
+      // Check if this event is trending or has ML enhancements
+      const mlEnhancements = getMLEnhancementsForEvent(upcommingList[k].eventId);
 
       finalHtml +=
-      '<div class="col-md-4 col-sm-12 col-lg-4" onclick="goToEventDescription(\'' + upcommingList[k].eventId + '\')">' +
-        '<div class="website-artefacto-group121" style="justify-content: center;">' +
+      '<div class="col-md-4 col-sm-12 col-lg-4" onclick="goToEventDescriptionML(\'' + upcommingList[k].eventId + '\')">' +
+        '<div class="website-artefacto-group121" style="justify-content: center; position: relative;">' +
+        mlEnhancements.badges +
         '<div class="website-artefacto-group103">' +
         '<img src="' + image + '" alt="Rectangle12168" class="website-artefacto-rectangle124" />' +
         '</div>' +
@@ -75,7 +90,7 @@ function populateeventListUpcoming(upcommingList) {
         '<br />' +
         '</span>' +
         '</div>' +
-
+        mlEnhancements.footer +
         '</div>' +
         '</div>';
 
@@ -371,4 +386,199 @@ function resetUpcomingEventsList(){
     window.location.href = 'eventDescription.html?eventId=' + eventId;
   }
 
-   myApp.read("events",populateeventListUpcoming);
+  // Enhanced event description navigation with ML tracking
+  function goToEventDescriptionML(eventId) {
+    // Track the interaction if ML service is available
+    if (window.mlService && window.mlService.isMLEnabled) {
+        window.mlService.trackInteraction(eventId, 'click');
+    }
+    
+    // Navigate to event description (fallback to existing function)
+    if (typeof goToEventDescription === 'function') {
+        goToEventDescription(eventId);
+    } else {
+        // Direct navigation if function doesn't exist
+        window.location.href = `eventDescription.html?eventId=${eventId}`;
+    }
+}
+
+// Enhance events with ML data
+async function enhanceEventsWithML(events) {
+    if (!window.mlService || !window.mlService.isMLEnabled) return;
+    
+    try {
+        // Get trending events
+        const trending = await window.mlService.getTrendingEvents();
+        if (trending && trending.length > 0) {
+            trendingEvents = trending;
+        }
+        
+        // Get demand predictions for visible events
+        const eventIds = Object.keys(events).slice(0, loaderCount);
+        for (const eventId of eventIds) {
+            try {
+                const prediction = await window.mlService.getEventDemandPrediction({
+                    event_id: eventId,
+                    title: events[eventId].title,
+                    category: events[eventId].category,
+                    city: events[eventId].city,
+                    fromDate: events[eventId].fromDate
+                });
+                
+                if (prediction && prediction.predicted_demand) {
+                    demandPredictions[eventId] = prediction.predicted_demand;
+                }
+            } catch (e) {
+                // Skip individual prediction errors
+                console.debug(`Skipping prediction for event ${eventId}:`, e);
+            }
+        }
+    } catch (error) {
+        console.warn('Error enhancing events with ML:', error);
+    }
+}
+
+// Get ML enhancements for a specific event
+function getMLEnhancementsForEvent(eventId) {
+    let badges = '';
+    let footer = '';
+    
+    // Add trending badge
+    if (trendingEvents.includes(eventId)) {
+        badges += '<div class="trending-badge"><i class="fa fa-fire"></i> Trending</div>';
+    }
+    
+    // Add demand prediction badge
+    if (demandPredictions[eventId]) {
+        const demand = Math.round(demandPredictions[eventId]);
+        const demandLevel = demand > 80 ? 'high' : demand > 50 ? 'medium' : 'low';
+        const demandColor = demand > 80 ? '#ff4757' : demand > 50 ? '#ffa502' : '#2ecc71';
+        
+        badges += `<div class="demand-badge" style="background-color: ${demandColor}">
+                    <i class="fa fa-users"></i> ${demand}% Expected
+                   </div>`;
+    }
+    
+    return { badges, footer };
+}
+
+// Add ML-enhanced search functionality
+function searchEventsWithML(query) {
+    if (!window.mlService || !window.mlService.isMLEnabled || !query.trim()) {
+        // Fallback to existing search
+        displayFilteredBySearch(query);
+        return;
+    }
+    
+    // Use ML-enhanced search
+    window.mlService.searchEventsML(query, {
+        category: document.getElementById('eventCategory').textContent,
+        place: document.getElementById('eventPlace').textContent
+    }).then(results => {
+        if (results && results.length > 0) {
+            // Convert ML results to format expected by existing functions
+            const formattedResults = {};
+            results.forEach((result, index) => {
+                formattedResults[index] = result.event_data;
+            });
+            populateFilteredData(formattedResults);
+            
+            // Show ML search indicator
+            showMLSearchIndicator(query, results.length);
+        } else {
+            // Fallback to regular search
+            displayFilteredBySearch(query);
+        }
+    }).catch(error => {
+        console.error('ML search failed, using fallback:', error);
+        displayFilteredBySearch(query);
+    });
+}
+
+// Show ML search enhancement indicator
+function showMLSearchIndicator(query, resultCount) {
+    const existingIndicator = document.querySelector('.ml-search-indicator');
+    if (existingIndicator) {
+        existingIndicator.remove();
+    }
+    
+    const indicator = document.createElement('div');
+    indicator.className = 'ml-search-indicator';
+    indicator.innerHTML = `
+        <div class="ml-search-enhancement">
+            <i class="fa fa-magic" style="color: #007bff; margin-right: 8px;"></i>
+            <strong>AI-Enhanced Search Results</strong> for "${query}" (${resultCount} personalized matches)
+            <button onclick="this.parentElement.parentElement.remove()" style="float: right; border: none; background: none; color: #666;">×</button>
+        </div>
+    `;
+    
+    const listContainer = document.getElementById('list');
+    if (listContainer) {
+        listContainer.parentNode.insertBefore(indicator, listContainer);
+    }
+}
+
+// Initialize ML features when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Add ML-enhanced styles
+    const mlStyles = document.createElement('style');
+    mlStyles.textContent = `
+        .trending-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .demand-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .ml-search-indicator {
+            margin: 10px 0;
+        }
+        
+        .ml-search-enhancement {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #1976d2;
+        }
+        
+        .website-artefacto-group121:hover .trending-badge,
+        .website-artefacto-group121:hover .demand-badge {
+            transform: scale(1.1);
+            transition: transform 0.2s ease;
+        }
+    `;
+    document.head.appendChild(mlStyles);
+    
+    // Initialize ML service integration
+    setTimeout(() => {
+        if (window.mlService) {
+            isMLEnabled = window.mlService.isMLEnabled;
+            console.log('ML Integration initialized for upcoming events');
+        }
+    }, 1000);
+});
+
+myApp.read("events",populateeventListUpcoming);

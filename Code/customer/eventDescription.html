@@ -47,6 +47,7 @@
     <script src="./database/firebase.js"></script>
     <script src="./database/database.js"></script>
     <script src="./js/utilities.js"></script>
+    <script src="./js/ml-integration.js"></script>
 
 </head>
 
@@ -203,12 +204,34 @@
         </div>
         <!-- Modal ticket ends -->
         </div>
+
+    <!-- ML-powered Similar Events Section -->
+    <div id="similar-events-section" class="container" style="margin-top: 50px; margin-bottom: 50px; display: none;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">
+                    <i class="fa fa-magic" style="margin-right: 10px; color: #ff6b6b;"></i>
+                    Similar Events You Might Like
+                    <span class="ml-badge">ML-Powered</span>
+                </h3>
+                <div id="similar-events-list" class="row">
+                    <div class="col-md-12 text-center">
+                        <i class="fa fa-spinner fa-spin" style="font-size: 24px; color: #007bff;"></i>
+                        <p style="margin-top: 10px;">Finding similar events...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
  
     <div id="footerContent" style="margin-top: -50px;"></div>
     <script> 
         $(function(){
             $("#headerContent").load("./header.html");
-           $("#footerContent").load("./footer.html"); 
+           $("#footerContent").load("./footer.html");
+           
+           // Initialize similar events after page loads
+           setTimeout(loadSimilarEvents, 2000);
            
         });
      </script> 

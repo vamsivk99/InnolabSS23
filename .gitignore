@@ -1,18 +1,161 @@
-# Byte-compiled
+# Artefacto ML Event Management Platform - .gitignore
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# General git
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# ML Models and Data
+*.pkl
+*.joblib
+*.h5
+*.model
+*.weights
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+Code/ml-services/*.log
+
+# Node.js
+node_modules/
+./Code/ArteFacto/server/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Package files
+*.tgz
+*.tar.gz
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Bower dependency directory
+bower_components
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Environment variables and secrets
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
 .env
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .env.*.local
 *.env
 
-# Node modules
-node_modules/
-./Code/ArteFacto/server/node_modules
+# Firebase
+.firebase/
+firebase-debug.log
+
+# API Keys and Secrets
+config/secrets.json
+*.pem
+*.key
+secrets/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Analytics and reporting
+Code/ml-services/event_analytics_report.html
+analytics_output/
+
+# Static assets (if generated)
+dist/
+build/
+
+# Documentation build files
+docs/_build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Stripe test files
+stripe_test_*
+
+# Backup files
+*.bak
+*.backup
+
+# Local development overrides
+local_settings.py
+development_config.json
 
 # Exclude presentation folder
 MidsemesterPresentation/
+
+# Internal documentation and development files
+*PROFESSIONALIZATION*
+*GITHUB_PUBLICATION*
+*PROJECT_COMPLETION*
+*ML_SHOWCASE*
+internal_docs/
+dev_notes/

@@ -46,6 +46,7 @@
       <script src="./database/database.js"></script>
       <script src="./js/utilities.js"></script>
       <script src="./database/signIn.js"></script>
+      <script src="./js/ml-integration.js"></script>
    </head>
 
    <body>
@@ -64,7 +65,15 @@
             }
             $("#upcomingEventsContent").load("./upcoming_events.html"); 
             $("#brandsContent").load("./brands.html"); 
-            $("#footerContent").load("./footer.html"); 
+            $("#footerContent").load("./footer.html");
+            
+            // Initialize ML recommendations after content loads
+            setTimeout(() => {
+               if (window.mlService && window.mlService.isMLEnabled) {
+                  addMLRecommendationsToPage();
+                  addTrendingEventsSection();
+               }
+            }, 2000);
          });
       </script> 
    </body>
